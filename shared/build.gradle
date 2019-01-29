@@ -1,4 +1,22 @@
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-multiplatform'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 
 kotlin {
     targets {
@@ -7,8 +25,8 @@ kotlin {
         fromPreset(iOSPreset, 'iOS') {
             compilations.main.outputKinds('FRAMEWORK')
         }
-
-        fromPreset(presets.jvm, 'android')
+        // Note that one of the Android Gradle plugins should be applied before the android preset is created.
+        fromPreset(presets.android, 'android')
     }
 
     sourceSets {
