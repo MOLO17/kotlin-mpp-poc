@@ -13,8 +13,8 @@
 		558DD22F2200A86900252AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558DD22E2200A86900252AB5 /* Assets.xcassets */; };
 		558DD2322200A86900252AB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558DD2302200A86900252AB5 /* LaunchScreen.storyboard */; };
 		558DD23D2200A86900252AB5 /* Kotlin_MPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD23C2200A86900252AB5 /* Kotlin_MPPTests.swift */; };
-		558DD25D2200C41E00252AB5 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD25C2200C41E00252AB5 /* main.framework */; };
-		558DD25E2200C41E00252AB5 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD25C2200C41E00252AB5 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		558DD2622200F45E00252AB5 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD2612200F45E00252AB5 /* main.framework */; };
+		558DD2632200F45E00252AB5 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD2612200F45E00252AB5 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,13 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		558DD25F2200C41E00252AB5 /* Embed Frameworks */ = {
+		558DD2642200F45E00252AB5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				558DD25E2200C41E00252AB5 /* main.framework in Embed Frameworks */,
+				558DD2632200F45E00252AB5 /* main.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +52,7 @@
 		558DD2382200A86900252AB5 /* Kotlin-MPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kotlin-MPPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		558DD23C2200A86900252AB5 /* Kotlin_MPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kotlin_MPPTests.swift; sourceTree = "<group>"; };
 		558DD23E2200A86900252AB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		558DD25C2200C41E00252AB5 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../../shared/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
+		558DD2612200F45E00252AB5 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "kotlin-outputs/main.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				558DD25D2200C41E00252AB5 /* main.framework in Frameworks */,
+				558DD2622200F45E00252AB5 /* main.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 		558DD21B2200A86700252AB5 = {
 			isa = PBXGroup;
 			children = (
-				558DD25C2200C41E00252AB5 /* main.framework */,
+				558DD2612200F45E00252AB5 /* main.framework */,
 				558DD2262200A86700252AB5 /* Kotlin-MPP */,
 				558DD23B2200A86900252AB5 /* Kotlin-MPPTests */,
 				558DD2252200A86700252AB5 /* Products */,
@@ -122,10 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 558DD2412200A86900252AB5 /* Build configuration list for PBXNativeTarget "Kotlin-MPP" */;
 			buildPhases = (
+				558DD2602200EF0400252AB5 /* Compile Kotlin */,
 				558DD2202200A86700252AB5 /* Sources */,
 				558DD2212200A86700252AB5 /* Frameworks */,
 				558DD2222200A86700252AB5 /* Resources */,
-				558DD25F2200C41E00252AB5 /* Embed Frameworks */,
+				558DD2642200F45E00252AB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,6 +212,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		558DD2602200EF0400252AB5 /* Compile Kotlin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compile Kotlin";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./build-ios.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		558DD2202200A86700252AB5 /* Sources */ = {
@@ -383,7 +405,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935BPM8A8T;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $PROJECT_DIR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$PROJECT_DIR/kotlin-outputs",
+					"$(PROJECT_DIR)/kotlin-outputs",
+				);
 				INFOPLIST_FILE = "Kotlin-MPP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -403,7 +428,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935BPM8A8T;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $PROJECT_DIR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$PROJECT_DIR/kotlin-outputs",
+					"$(PROJECT_DIR)/kotlin-outputs",
+				);
 				INFOPLIST_FILE = "Kotlin-MPP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

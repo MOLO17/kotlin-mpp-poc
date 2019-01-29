@@ -7,7 +7,7 @@ build/
 out/
 captures/
 .externalNativeBuild
-
+ios-app/Kotlin-MPP/kotlin-outputs/
 
 ### Xcode ###
 # Xcode
