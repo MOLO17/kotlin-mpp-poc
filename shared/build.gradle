@@ -20,12 +20,18 @@ android {
 
 kotlin {
     targets {
-        final def iOSPreset = System.getenv('SDK_NAME')?.startsWith("iphoneos") ? presets.iosArm64 : presets.iosX64
+        // `SDK_NAME` is an env variable that Xcode sets when launching a script from a build step.
+        // Since the framework building is meant to be started from Xcode as a build step, we check here
+        // what kind of cpu architecture use for compilation.
+        final def iOSPreset = System.getenv('SDK_NAME')?.startsWith("iphoneos") \
+            ? presets.iosArm64 : presets.iosX64
 
+        // iosArm64 targets physical devices. Use iosX64 for simulators.
         fromPreset(iOSPreset, 'iOS') {
             compilations.main.outputKinds('FRAMEWORK')
         }
         // Note that one of the Android Gradle plugins should be applied before the android preset is created.
+        // That's why we import `com.android.library` on top.
         fromPreset(presets.android, 'android')
     }
 
@@ -54,6 +60,10 @@ kotlin {
 configurations {
     compileClasspath
 }
+
+//
+// Xcode Framework creation
+//
 
 task packForXCode(type: Sync) {
     final File frameworkDir = new File(buildDir, "xcode-frameworks")
