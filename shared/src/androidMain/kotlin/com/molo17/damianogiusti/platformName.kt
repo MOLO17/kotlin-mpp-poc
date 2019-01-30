@@ -27,6 +27,7 @@ actual class BluetoothAdapter actual constructor(whenReady: (BluetoothAdapter) -
 
     actual fun stopScan() {
         bluetoothAdapter.bluetoothLeScanner.stopScan(this)
+        callback = null
     }
 
     override fun onBatchScanResults(results: MutableList<ScanResult>?) {
