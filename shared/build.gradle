@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-multiplatform'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 28
@@ -8,7 +9,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -38,7 +38,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api 'org.jetbrains.kotlin:kotlin-stdlib-common'
+                api "org.jetbrains.kotlin:kotlin-stdlib-common"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.10.0"
             }
         }
 
@@ -51,6 +52,13 @@ kotlin {
         androidMain {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib'
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
+            }
+        }
+
+        iOSMain {
+            dependencies {
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.10.0"
             }
         }
     }
