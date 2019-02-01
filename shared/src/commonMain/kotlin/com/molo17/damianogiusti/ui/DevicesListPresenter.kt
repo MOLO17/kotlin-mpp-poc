@@ -9,14 +9,15 @@ import com.molo17.damianogiusti.BluetoothDevice
 class DevicesListPresenter(
     private val bluetoothAdapter: BluetoothAdapter
 ) {
-
     private var view: DevicesListView? = null
+    private var discoveredDevices = mutableMapOf<String, BluetoothDevice>()
 
     fun attachView(v: DevicesListView) {
         view = v
 
-        bluetoothAdapter.discoverDevices { devices ->
-            val uiDevices = devices.map(::mapToUiDevice)
+        bluetoothAdapter.discoverDevices { device ->
+            discoveredDevices[device.id] = device
+            val uiDevices = discoveredDevices.values.map(::mapToUiDevice)
             view?.showDevices(uiDevices)
         }
     }

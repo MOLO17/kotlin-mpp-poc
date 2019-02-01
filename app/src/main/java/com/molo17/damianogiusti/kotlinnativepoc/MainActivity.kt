@@ -7,12 +7,15 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.molo17.damianogiusti.BluetoothAdapter
+import com.molo17.damianogiusti.ui.DevicesListPresenter
+import com.molo17.damianogiusti.ui.DevicesListView
+import com.molo17.damianogiusti.ui.UiDevice
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DevicesListView {
+
+    private val presenter by lazy { DevicesListPresenter(BluetoothAdapter(applicationContext)) }
 
     private val textView by lazy { findViewById<TextView>(R.id.textView) }
-
-    private lateinit var bluetoothAdapter: BluetoothAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (hasLocationPermission()) {
@@ -38,15 +42,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        bluetoothAdapter.stopScan()
+        presenter.detachView()
     }
 
     private fun start() {
-        bluetoothAdapter = BluetoothAdapter(applicationContext) {
-            it.discoverDevices { devices ->
-                textView.text = devices.joinToString("\n\n") { (id, name) -> "$id\n$name" }
-            }
-        }
+        presenter.attachView(this)
+    }
+
+    override fun showDevices(devices: List<UiDevice>) {
+        textView.text = devices.joinToString("\n\n") { it.displayableContent }
     }
 
     private fun hasLocationPermission() =

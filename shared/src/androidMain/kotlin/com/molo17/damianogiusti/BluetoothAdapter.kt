@@ -6,11 +6,8 @@ import android.bluetooth.le.ScanResult
 import android.content.Context
 
 actual class BluetoothAdapter(
-    private val context: Context,
-    actual var whenReady: ((BluetoothAdapter) -> Unit)?
+    private val context: Context
 ) : ScanCallback() {
-
-    private val foundDevices = mutableMapOf<String, BluetoothDevice>()
 
     private val bluetoothManager: BluetoothManager
         get() = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
@@ -18,17 +15,12 @@ actual class BluetoothAdapter(
     private val bluetoothAdapter: android.bluetooth.BluetoothAdapter
         get() = bluetoothManager.adapter
 
-    private var callback: ((List<BluetoothDevice>) -> Unit)? = null
-
-    init {
-        whenReady?.invoke(this)
-    }
+    private var callback: ((BluetoothDevice) -> Unit)? = null
 
     override fun onScanResult(callbackType: Int, result: ScanResult?) {
         val device = result?.device
         if (device != null) {
-            foundDevices[device.address] = BluetoothDevice(device.address, device.name ?: "")
-            callback?.invoke(foundDevices.values.toList())
+            callback?.invoke(BluetoothDevice(device.address, device.name ?: ""))
         }
     }
 
@@ -38,7 +30,7 @@ actual class BluetoothAdapter(
 
 
 
-    actual fun discoverDevices(callback: (List<BluetoothDevice>) -> Unit) {
+    actual fun discoverDevices(callback: (BluetoothDevice) -> Unit) {
         this.callback = callback
 
         bluetoothAdapter.bluetoothLeScanner.startScan(this)

@@ -10,36 +10,28 @@ import UIKit
 import main
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DevicesListView {
 
     @IBOutlet weak var label: UITextView!
     
-    private var adapter: BluetoothAdapter?
+    private let presenter = DevicesListPresenter(bluetoothAdapter: BluetoothAdapter())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = MainKt.getMessage()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        adapter = BluetoothAdapter { [weak self] adapter -> KotlinUnit in
-            if let callback = self?.didReceiveDevices(devices:) {
-                adapter.discoverDevices(callback: callback)
-            }
-            return KotlinUnit()
-        }
+        presenter.attachView(v: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        adapter?.stopScan()
-        adapter = nil
+        presenter.detachView()
     }
 
-    private func didReceiveDevices(devices: [BluetoothDevice]) -> KotlinUnit {
-        label.text = devices.map { "ID: \($0.id)\nName: \($0.name)" }.joined(separator: "\n\n")
-        return KotlinUnit()
+    func showDevices(devices: [UiDevice]) {
+        label.text = devices.map { $0.displayableContent }.joined(separator: "\n\n")
     }
 }
 

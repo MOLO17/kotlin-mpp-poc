@@ -7,11 +7,10 @@ import platform.CoreBluetooth.CBPeripheral
 import platform.Foundation.NSNumber
 import platform.darwin.NSObject
 
-actual class BluetoothAdapter(
-    actual var whenReady: ((BluetoothAdapter) -> Unit)?
-) {
+actual class BluetoothAdapter {
 
-    private val devices = mutableListOf<BluetoothDevice>()
+    private var isReady = false
+    private var whenReady: ((BluetoothAdapter) -> Unit)? = null
 
     private val delegateImpl = object : NSObject(),
         CBCentralManagerDelegateProtocol {
@@ -31,13 +30,12 @@ actual class BluetoothAdapter(
                 id = didDiscoverPeripheral.identifier.UUIDString,
                 name = didDiscoverPeripheral.name.orEmpty()
             )
-            devices.add(device)
-            callback?.invoke(devices)
+            onDeviceReceived?.invoke(device)
         }
     }
 
     private val manager = CBCentralManager()
-    private var callback: ((List<BluetoothDevice>) -> Unit)? = null
+    private var onDeviceReceived: ((BluetoothDevice) -> Unit)? = null
 
     init {
         manager.delegate = delegateImpl
@@ -47,13 +45,21 @@ actual class BluetoothAdapter(
     // Actual declarations
     ///////////////////////////////////////////////////////////////////////////
 
-    actual fun discoverDevices(callback: (List<BluetoothDevice>) -> Unit) {
-        manager.scanForPeripheralsWithServices(null, null)
-        this.callback = callback
+    actual fun discoverDevices(callback: (BluetoothDevice) -> Unit) {
+        if (isReady) {
+            manager.scanForPeripheralsWithServices(null, null)
+            onDeviceReceived = callback
+        } else {
+            whenReady = {
+                manager.scanForPeripheralsWithServices(null, null)
+                onDeviceReceived = callback
+                whenReady = null
+            }
+        }
     }
 
     actual fun stopScan() {
         manager.stopScan()
-        callback = null
+        onDeviceReceived = null
     }
 }
