@@ -19,10 +19,12 @@ class UsersListViewController: UIViewController, UsersListView {
 
     private let datasource = UsersListDatasource()
     private lazy var tableView = UITableView()
+    private lazy var progressView = UIActivityIndicatorView()
 
     override func loadView() {
         view = UIView()
         view.addSubview(tableView)
+        view.addSubview(progressView)
     }
 
     override func viewDidLoad() {
@@ -33,6 +35,12 @@ class UsersListViewController: UIViewController, UsersListView {
 
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: kReuseIdentifier)
         tableView.dataSource = datasource
+
+        progressView.color = .black
+        progressView.width(48)
+        progressView.aspectRatio(1)
+        progressView.centerInSuperview()
+        progressView.startAnimating()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -45,23 +53,28 @@ class UsersListViewController: UIViewController, UsersListView {
         presenter.detachView()
     }
 
+    // MARK: UsersListView
+
     func showUsers(displayableUsers: [UiUser]) {
         datasource.dataset = displayableUsers
+        tableView.isHidden = false
         tableView.reloadData()
     }
 
     func hideUsers() {
-
+        tableView.isHidden = true
     }
 
     func showLoading() {
-        
+        progressView.isHidden = false
     }
 
     func hideLoading() {
-
+        progressView.isHidden = true
     }
 }
+
+// MARK: - UsersListDatasource
 
 private class UsersListDatasource: NSObject, UITableViewDataSource {
 
