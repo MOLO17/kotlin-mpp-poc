@@ -5,9 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Runnable
 import kotlin.coroutines.CoroutineContext
 
-actual object MainDispatcher : CoroutineDispatcher() {
+actual object BackgroundDispatcher : CoroutineDispatcher() {
     override fun dispatch(context: CoroutineContext, block: Runnable) {
-        // In the JVM multi-threading is supported so the implementation can rely on the Main dispatcher.
-        Dispatchers.Main.dispatch(context, block)
+        // In the JVM multi-threading is supported so the implementation can rely on the Default dispatcher.
+        Dispatchers.Default.dispatch(context, block)
     }
 }

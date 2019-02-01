@@ -8,6 +8,7 @@ import kotlin.coroutines.CoroutineContext
 
 actual object MainDispatcher : CoroutineDispatcher() {
     override fun dispatch(context: CoroutineContext, block: Runnable) {
+        // Dispatch in the iOS main queue.
         dispatch_async(dispatch_get_main_queue(), block::run)
     }
 }

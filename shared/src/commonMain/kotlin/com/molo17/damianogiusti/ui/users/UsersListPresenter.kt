@@ -1,11 +1,9 @@
 package com.molo17.damianogiusti.ui.users
+import com.molo17.damianogiusti.BackgroundDispatcher
 import com.molo17.damianogiusti.MainDispatcher
 import com.molo17.damianogiusti.data.User
 import com.molo17.damianogiusti.data.UsersRepository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -13,7 +11,8 @@ import kotlin.coroutines.CoroutineContext
  */
 class UsersListPresenter(
     private val usersRepository: UsersRepository,
-    private val mainDispatcher: CoroutineDispatcher
+    private val mainDispatcher: MainDispatcher,
+    private val backgroundDispatcher: BackgroundDispatcher
 ) : CoroutineScope {
 
     private var view: UsersListView? = null
@@ -28,7 +27,7 @@ class UsersListPresenter(
         launch {
             view?.hideUsers()
             view?.showLoading()
-            val users = usersRepository.getAllUsers()
+            val users = withContext(backgroundDispatcher) { usersRepository.getAllUsers() }
             val displayableUsers = users.map(::mapToUiUser)
             view?.hideLoading()
             view?.showUsers(displayableUsers)
@@ -48,4 +47,4 @@ private fun mapToUiUser(user: User) = UiUser(
     pictureUrl = user.profilePictureUrl
 )
 
-fun getUserListPresenter() = UsersListPresenter(UsersRepository(), MainDispatcher)
+fun getUserListPresenter() = UsersListPresenter(UsersRepository(), MainDispatcher, BackgroundDispatcher)
