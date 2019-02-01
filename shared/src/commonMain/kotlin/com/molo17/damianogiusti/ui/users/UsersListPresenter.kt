@@ -1,24 +1,31 @@
 package com.molo17.damianogiusti.ui.users
-
+import com.molo17.damianogiusti.MainDispatcher
 import com.molo17.damianogiusti.data.User
 import com.molo17.damianogiusti.data.UsersRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Created by Damiano Giusti on 01/02/19.
  */
-class UsersListPresenter(private val usersRepository: UsersRepository) {
+class UsersListPresenter(
+    private val usersRepository: UsersRepository,
+    private val mainDispatcher: CoroutineDispatcher
+) : CoroutineScope {
 
     private var view: UsersListView? = null
-    private val jobs = mutableListOf<Job>()
+
+    private val job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = mainDispatcher + job
 
     fun attachView(v: UsersListView) {
         view = v
 
-        jobs += GlobalScope.launch(Dispatchers.Main) {
+        launch {
             view?.hideUsers()
             view?.showLoading()
             val users = usersRepository.getAllUsers()
@@ -30,8 +37,7 @@ class UsersListPresenter(private val usersRepository: UsersRepository) {
 
     fun detachView() {
         view = null
-        jobs.forEach { it.cancel() }
-        jobs.clear()
+        job.cancel()
     }
 }
 
@@ -42,4 +48,4 @@ private fun mapToUiUser(user: User) = UiUser(
     pictureUrl = user.profilePictureUrl
 )
 
-fun getUserListPresenter() = UsersListPresenter(UsersRepository())
+fun getUserListPresenter() = UsersListPresenter(UsersRepository(), MainDispatcher)
