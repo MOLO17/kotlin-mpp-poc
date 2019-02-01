@@ -36,10 +36,14 @@ kotlin {
     }
 
     sourceSets {
+        final def ktorVersion = "1.1.2"
+
         commonMain {
             dependencies {
                 api "org.jetbrains.kotlin:kotlin-stdlib-common"
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.10.0"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.1.1"
+                implementation "io.ktor:ktor-client-core:$ktorVersion"
             }
         }
 
@@ -53,12 +57,16 @@ kotlin {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib'
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+                implementation "io.ktor:ktor-client-android:$ktorVersion"
             }
         }
 
         iOSMain {
             dependencies {
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.10.0"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.1.1"
+                implementation "io.ktor:ktor-client-ios:$ktorVersion"
             }
         }
     }
