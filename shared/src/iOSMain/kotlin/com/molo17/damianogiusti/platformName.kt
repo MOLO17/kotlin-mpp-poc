@@ -12,8 +12,8 @@ actual fun platformName(): String {
     return UIDevice.currentDevice.run { "$systemName $systemVersion" }
 }
 
-actual class BluetoothAdapter actual constructor(
-    val whenReady: (BluetoothAdapter) -> Unit
+actual class BluetoothAdapter(
+    actual var whenReady: ((BluetoothAdapter) -> Unit)?
 ) {
 
     private val devices = mutableListOf<BluetoothDevice>()
@@ -21,7 +21,7 @@ actual class BluetoothAdapter actual constructor(
     private val delegateImpl = object : NSObject(), CBCentralManagerDelegateProtocol {
         override fun centralManagerDidUpdateState(central: CBCentralManager) {
             when (central.state) {
-                CBCentralManagerStatePoweredOn -> whenReady(this@BluetoothAdapter)
+                CBCentralManagerStatePoweredOn -> whenReady?.invoke(this@BluetoothAdapter)
             }
         }
 
