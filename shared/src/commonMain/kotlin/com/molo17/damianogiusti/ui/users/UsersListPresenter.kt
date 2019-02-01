@@ -19,8 +19,11 @@ class UsersListPresenter(private val usersRepository: UsersRepository) {
         view = v
 
         jobs += GlobalScope.launch(Dispatchers.Main) {
+            view?.hideUsers()
+            view?.showLoading()
             val users = usersRepository.getAllUsers()
             val displayableUsers = users.map(::mapToUiUser)
+            view?.hideLoading()
             view?.showUsers(displayableUsers)
         }
     }
