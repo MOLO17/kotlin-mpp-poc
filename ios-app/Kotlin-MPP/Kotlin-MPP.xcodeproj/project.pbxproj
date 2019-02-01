@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BAB1B8134AB04DB3309D86A /* Pods_Kotlin_MPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFD1B7C6C126B53E439C8D9 /* Pods_Kotlin_MPPTests.framework */; };
-		4547A53D58A1B555E47C4263 /* Pods_Kotlin_MPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0B41B75B937B331E9B4876 /* Pods_Kotlin_MPP.framework */; };
 		55211CED220485D3004AAB05 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55211CEC220485D3004AAB05 /* main.framework */; };
 		55211CEE220485D3004AAB05 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55211CEC220485D3004AAB05 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		557941652216E2E400B2C694 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557941642216E2E400B2C694 /* Snackbar.swift */; };
+		55211CF02204A5DB004AAB05 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55211CEF2204A5DB004AAB05 /* UserTableViewCell.swift */; };
 		558DD2282200A86700252AB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD2272200A86700252AB5 /* AppDelegate.swift */; };
 		558DD22A2200A86700252AB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD2292200A86700252AB5 /* ViewController.swift */; };
 		558DD22D2200A86700252AB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558DD22B2200A86700252AB5 /* Main.storyboard */; };
 		558DD22F2200A86900252AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558DD22E2200A86900252AB5 /* Assets.xcassets */; };
 		558DD2322200A86900252AB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558DD2302200A86900252AB5 /* LaunchScreen.storyboard */; };
 		558DD23D2200A86900252AB5 /* Kotlin_MPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD23C2200A86900252AB5 /* Kotlin_MPPTests.swift */; };
+		8542B43DF31C0D75EB8CF8B3 /* Pods_Kotlin_MPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06855B4A3259166D7EC01CC8 /* Pods_Kotlin_MPP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +45,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38B1242C6A43B57C89069871 /* Pods-Kotlin-MPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPPTests.release.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPPTests/Pods-Kotlin-MPPTests.release.xcconfig"; sourceTree = "<group>"; };
-		4185CFF4A062D221B567527C /* Pods-Kotlin-MPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPP.release.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP.release.xcconfig"; sourceTree = "<group>"; };
+		01D17211C0FA6FDC2C97A086 /* Pods_Kotlin_MPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kotlin_MPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06855B4A3259166D7EC01CC8 /* Pods_Kotlin_MPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kotlin_MPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		357F46FADB56E4FF83EAF541 /* Pods-Kotlin-MPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPPTests.release.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPPTests/Pods-Kotlin-MPPTests.release.xcconfig"; sourceTree = "<group>"; };
+		39544724CAB3F3D749792873 /* Pods-Kotlin-MPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPPTests.debug.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPPTests/Pods-Kotlin-MPPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		55211CE022046D1A004AAB05 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		55211CEC220485D3004AAB05 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "kotlin-outputs/main.framework"; sourceTree = "<group>"; };
 		557941642216E2E400B2C694 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snackbar.swift; path = ../../../../../../../../Downloads/Snackbar.swift; sourceTree = "<group>"; };
+		55211CEF2204A5DB004AAB05 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		558DD2242200A86700252AB5 /* Kotlin-MPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kotlin-MPP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		558DD2272200A86700252AB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		558DD2292200A86700252AB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				558DD22E2200A86900252AB5 /* Assets.xcassets */,
 				558DD2302200A86900252AB5 /* LaunchScreen.storyboard */,
 				558DD2332200A86900252AB5 /* Info.plist */,
+				55211CE022046D1A004AAB05 /* UsersListViewController.swift */,
+				55211CEF2204A5DB004AAB05 /* UserTableViewCell.swift */,
 				557941642216E2E400B2C694 /* Snackbar.swift */,
 			);
 			path = "Kotlin-MPP";
@@ -274,6 +280,52 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3B623427DF7B31634D3A26EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54BC72A07A3795D6CEC3D56F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kotlin-MPPTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		558DD2602200EF0400252AB5 /* Compile Kotlin */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,9 +403,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55211CF02204A5DB004AAB05 /* UserTableViewCell.swift in Sources */,
 				557941652216E2E400B2C694 /* Snackbar.swift in Sources */,
 				558DD22A2200A86700252AB5 /* ViewController.swift in Sources */,
 				558DD2282200A86700252AB5 /* AppDelegate.swift in Sources */,
+				55211CE122046D1A004AAB05 /* UsersListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
