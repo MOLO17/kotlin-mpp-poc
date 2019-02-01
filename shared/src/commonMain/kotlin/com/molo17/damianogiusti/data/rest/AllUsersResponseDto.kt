@@ -1,5 +1,6 @@
 package com.molo17.damianogiusti.data.rest
 
+import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -59,7 +60,7 @@ data class AllUsersResponseDto(
             val coordinates: Coordinates,
 
             @SerialName("postcode")
-            val postcode: Int,
+            val postcode: String,
 
             @SerialName("state")
             val state: String,
@@ -120,8 +121,9 @@ data class AllUsersResponseDto(
             @SerialName("name")
             val name: String,
 
+            @Optional
             @SerialName("value")
-            val value: Any?
+            val value: String? = null
         )
 
         @Serializable
