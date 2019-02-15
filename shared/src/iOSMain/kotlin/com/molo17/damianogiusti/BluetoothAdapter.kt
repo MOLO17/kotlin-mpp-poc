@@ -7,8 +7,12 @@ import platform.darwin.NSObject
 
 actual class BluetoothAdapter {
 
+    actual var listener: BluetoothAdapterListener? = null
+
     private var isReady = false
     private var whenReady: ((BluetoothAdapter) -> Unit)? = null
+    private var connectedDevice: BluetoothDevice? = null
+    private var discoveredServices: List<BleService>? = null
 
     private val delegateImpl = object : NSObject(), CBCentralManagerDelegateProtocol, CBPeripheralDelegateProtocol {
         override fun centralManagerDidUpdateState(central: CBCentralManager) {
@@ -28,11 +32,16 @@ actual class BluetoothAdapter {
         }
 
         override fun centralManager(central: CBCentralManager, didConnectPeripheral: CBPeripheral) {
-            onDeviceConnected?.invoke(BluetoothDevice(didConnectPeripheral))
+            connectedDevice = BluetoothDevice(didConnectPeripheral).also {
+                listener?.onStateChange(BleState.Connected(it))
+            }
         }
 
         override fun peripheral(peripheral: CBPeripheral, didDiscoverServices: NSError?) {
-            onServicesDiscovered?.invoke(BluetoothDevice(peripheral))
+            val device = getDeviceOrThrow()
+            discoveredServices = peripheral.cbServices.map { BleService(it.UUID.UUIDString, device) }.also {
+                listener?.onStateChange(BleState.ServicesDiscovered(device, it))
+            }
         }
 
         override fun peripheral(
@@ -40,7 +49,11 @@ actual class BluetoothAdapter {
             didDiscoverCharacteristicsForService: CBService,
             error: NSError?
         ) {
-            onCharsDiscovered?.invoke(BluetoothDevice(peripheral))
+            val device = getDeviceOrThrow()
+            val serviceId = didDiscoverCharacteristicsForService.UUID.UUIDString
+            val service = checkNotNull(discoveredServices).first { it.id == serviceId }
+            val chars = didDiscoverCharacteristicsForService.cbChars.map { char -> BleCharacteristic(char, service) }
+            listener?.onStateChange(BleState.CharacteristicsDiscovered(device, chars))
         }
 
         override fun peripheral(
@@ -48,19 +61,28 @@ actual class BluetoothAdapter {
             didUpdateValueForCharacteristic: CBCharacteristic,
             error: NSError?
         ) {
-
+            val serviceId = didUpdateValueForCharacteristic.UUID.UUIDString
+            val service = checkNotNull(discoveredServices).first { it.id == serviceId }
+            listener?.onStateChange(
+                BleState.CharacteristicChanged(
+                    getDeviceOrThrow(),
+                    BleCharacteristic(didUpdateValueForCharacteristic, service)
+                )
+            )
         }
     }
 
     private val manager = CBCentralManager()
     private var onDeviceReceived: ((BluetoothDevice) -> Unit)? = null
-    private var onDeviceConnected: ((BluetoothDevice) -> Unit)? = null
-    private var onServicesDiscovered: ((BluetoothDevice) -> Unit)? = null
-    private var onCharsDiscovered: ((BluetoothDevice) -> Unit)? = null
-    private var onCharUpdated: ((BluetoothDevice, CBCharacteristic) -> Unit)? = null
 
     init {
         manager.delegate = delegateImpl
+    }
+
+    private fun getDeviceOrThrow(): BluetoothDevice {
+        val device = connectedDevice
+        check(device != null) { "Device is not connected!" }
+        return device
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -85,57 +107,37 @@ actual class BluetoothAdapter {
         onDeviceReceived = null
     }
 
-    actual fun connect(
-        device: BluetoothDevice,
-        callback: (BluetoothDevice) -> Unit
-    ) {
-        onDeviceConnected = { d ->
-            onDeviceConnected = null
-            callback(d)
-        }
+    actual fun findBondedDevices(callback: (List<BluetoothDevice>) -> Unit) {
+        manager.retrieveConnectedPeripheralsWithServices(listOf("180A"))
+            .mapNotNull { it as? CBPeripheral }
+            .map { BluetoothDevice(it) }
+            .also(callback)
+    }
+
+    actual fun connect(device: BluetoothDevice) {
         manager.connectPeripheral(device.peripheral, null)
     }
 
-    actual fun discoverServices(
-        device: BluetoothDevice,
-        uuids: List<String>,
-        callback: (List<BleService>) -> Unit
-    ) {
-        onServicesDiscovered = { d ->
-            onServicesDiscovered = null
-            val services = d.peripheral.cbServices.map { BleService(it.UUID.UUIDString, d) }
-            callback(services)
-        }
-        device.peripheral.discoverServices(uuids)
+    actual fun disconnect() {
+        manager.cancelPeripheralConnection(getDeviceOrThrow().peripheral)
     }
 
-    actual fun discoverCharacteristics(
-        service: BleService,
-        uuids: List<String>,
-        callback: (List<BleCharacteristic>) -> Unit
-    ) {
-        onCharsDiscovered = { d ->
-            onCharsDiscovered = null
-            val cbService = d.peripheral.cbServices.first { it.UUID.UUIDString == service.id }
-            val chars = cbService.cbChars.map { char -> BleCharacteristic(char, service) }
-            callback(chars)
-        }
+    actual fun discoverServices() {
+        getDeviceOrThrow().peripheral.discoverServices(null)
     }
 
-    actual fun setNotificationEnabled(
-        char: BleCharacteristic,
-        callback: (BleCharacteristic) -> Unit
-    ) {
-        onCharUpdated = { _, c ->
-            callback(BleCharacteristic(c, char.service))
-        }
+    actual fun discoverCharacteristics(service: BleService) {
+        val s = service.device.peripheral.cbServices.first { it.UUID.UUIDString == service.id }
+        service.device.peripheral.discoverCharacteristics(null, s)
+    }
+
+    actual fun setNotificationEnabled(char: BleCharacteristic) {
         val cbService = char.service.device.peripheral.cbServices.first { it.UUID.UUIDString == char.service.id }
         val c = cbService.cbChars.first { it.UUID.UUIDString == char.id }
         char.service.device.peripheral.setNotifyValue(true, c)
     }
 
-    actual fun serNotificationDisabled(char: BleCharacteristic) {
-        onCharUpdated = null
+    actual fun setNotificationDisabled(char: BleCharacteristic) {
         val cbService = char.service.device.peripheral.cbServices.first { it.UUID.UUIDString == char.service.id }
         val c = cbService.cbChars.first { it.UUID.UUIDString == char.id }
         char.service.device.peripheral.setNotifyValue(true, c)

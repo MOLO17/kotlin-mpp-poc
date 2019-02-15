@@ -12,7 +12,7 @@ data class BleService(
 
 data class BleCharacteristic(
     val id: String,
-    val value: ByteArray,
+    val value: ByteArray?,
     val service: BleService
 ) {
     override fun equals(other: Any?): Boolean {
@@ -22,7 +22,10 @@ data class BleCharacteristic(
         other as BleCharacteristic
 
         if (id != other.id) return false
-        if (!value.contentEquals(other.value)) return false
+        if (value != null) {
+            if (other.value == null) return false
+            if (!value.contentEquals(other.value)) return false
+        } else if (other.value != null) return false
         if (service != other.service) return false
 
         return true
@@ -30,7 +33,7 @@ data class BleCharacteristic(
 
     override fun hashCode(): Int {
         var result = id.hashCode()
-        result = 31 * result + value.contentHashCode()
+        result = 31 * result + (value?.contentHashCode() ?: 0)
         result = 31 * result + service.hashCode()
         return result
     }

@@ -11,24 +11,39 @@ actual data class BluetoothDevice(
     internal val androidDevice: BluetoothDevice
 ) {
     internal var gatt: BluetoothGatt? = null
-    internal var gattCallback: KtGattCallback? = null
+}
+
+internal fun BleCharacteristic(char: BluetoothGattCharacteristic, service: BleService): BleCharacteristic {
+    return BleCharacteristic(char.uuid.toString(), char.value, service)
 }
 
 internal class KtGattCallback(
-    var onConnectionStateChange: ((gatt: BluetoothGatt, status: Int, newState: Int) -> Unit)? = null,
-    var onServicesDiscovered: ((gatt: BluetoothGatt, status: Int) -> Unit)? = null,
-    var onCharacteristicChanged: ((gatt: BluetoothGatt, char: BluetoothGattCharacteristic) -> Unit)? = null
+    private val proxy: BluetoothGattCallback,
+    var onConnectionStateChange: ((gatt: BluetoothGatt, status: Int, newState: Int) -> Unit)? = null
 ) : BluetoothGattCallback() {
 
     override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
         onConnectionStateChange?.invoke(gatt, status, newState)
+        proxy.onConnectionStateChange(gatt, status, newState)
     }
 
     override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
-        onServicesDiscovered?.invoke(gatt, status)
+        proxy.onServicesDiscovered(gatt, status)
     }
 
     override fun onCharacteristicChanged(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
-        onCharacteristicChanged?.invoke(gatt, characteristic)
+        proxy.onCharacteristicChanged(gatt, characteristic)
+    }
+
+    override fun onCharacteristicRead(gatt: BluetoothGatt?, characteristic: BluetoothGattCharacteristic?, status: Int) {
+        proxy.onCharacteristicRead(gatt, characteristic, status)
+    }
+
+    override fun onCharacteristicWrite(
+        gatt: BluetoothGatt?,
+        characteristic: BluetoothGattCharacteristic?,
+        status: Int
+    ) {
+        proxy.onCharacteristicWrite(gatt, characteristic, status)
     }
 }
