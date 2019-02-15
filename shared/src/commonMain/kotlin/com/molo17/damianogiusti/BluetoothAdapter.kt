@@ -28,7 +28,7 @@ sealed class BleState {
     data class Disconnected(val device: BluetoothDevice): BleState()
     data class ServicesDiscovered(val device: BluetoothDevice, val services: List<BleService>): BleState()
     data class CharacteristicsDiscovered(val device: BluetoothDevice, val chars: List<BleCharacteristic>): BleState()
-    data class CharacteristicChanged(val device: BluetoothDevice, val char: BleCharacteristic): BleState()
+    data class CharacteristicChanged(val device: BluetoothDevice, val characteristic: BleCharacteristic): BleState()
 }
 
 interface BluetoothAdapterListener {

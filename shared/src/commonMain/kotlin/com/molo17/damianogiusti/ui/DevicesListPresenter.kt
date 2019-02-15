@@ -65,7 +65,7 @@ class DevicesListPresenter(
                 view?.showMessage("Char discovered ${char.id}")
                 bluetoothAdapter.setNotificationEnabled(char)
             }
-            is BleState.CharacteristicChanged -> onButtonPressed(state.char)
+            is BleState.CharacteristicChanged -> onButtonPressed(state.characteristic)
         }.let { /* exhaustive */ }
     }
 
