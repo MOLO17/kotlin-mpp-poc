@@ -15,11 +15,11 @@ internal fun BluetoothDevice(peripheral: CBPeripheral) = BluetoothDevice(
     peripheral = peripheral
 )
 
-internal val CBPeripheral.cbServices get() = services().orEmpty().map { it as CBMutableService }
-internal val CBService.cbChars get() = characteristics().orEmpty().map { it as CBMutableCharacteristic }
+internal val CBPeripheral.cbServices get() = services().orEmpty().map { it as CBService }
+internal val CBService.cbChars get() = characteristics().orEmpty().map { it as CBCharacteristic }
 
 internal fun BleCharacteristic(char: CBCharacteristic, service: BleService): BleCharacteristic {
     val id = char.UUID.UUIDString
-    val value = char.value?.toByteArray() ?: ByteArray(0)
+    val value = char.value?.toByteArray()
     return BleCharacteristic(id, value, service)
 }
