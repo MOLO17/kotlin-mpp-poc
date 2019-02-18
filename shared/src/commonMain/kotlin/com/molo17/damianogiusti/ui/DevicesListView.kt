@@ -6,4 +6,6 @@ package com.molo17.damianogiusti.ui
 interface DevicesListView {
 
     fun showDevices(devices: List<UiDevice>)
+
+    fun showMessage(message: String)
 }

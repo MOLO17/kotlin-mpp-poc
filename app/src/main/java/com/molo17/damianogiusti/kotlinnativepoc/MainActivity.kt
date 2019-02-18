@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import android.widget.Toast
 import com.molo17.damianogiusti.BluetoothAdapter
 import com.molo17.damianogiusti.ui.DevicesListPresenter
 import com.molo17.damianogiusti.ui.DevicesListView
@@ -51,6 +52,10 @@ class MainActivity : AppCompatActivity(), DevicesListView {
 
     override fun showDevices(devices: List<UiDevice>) {
         textView.text = devices.joinToString("\n\n") { it.displayableContent }
+    }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun hasLocationPermission() =
