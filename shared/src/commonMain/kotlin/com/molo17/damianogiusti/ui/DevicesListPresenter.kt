@@ -3,7 +3,7 @@ package com.molo17.damianogiusti.ui
 import com.molo17.damianogiusti.*
 
 private const val SERVICE_BUTTON_PRESSED = "FEE0"
-private const val CHAR_BUTTON_PRESSED = "00000010"
+private const val CHAR_BUTTON_PRESSED = "0010"
 private const val SERVICE_HEART_RATE = "180D"
 private const val CHAR_HEART_RATE = "2A37"
 
