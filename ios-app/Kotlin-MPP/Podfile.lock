@@ -37,10 +37,12 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
+  - Nuke (7.5.2)
   - TinyConstraints (3.3.1)
 
 DEPENDENCIES:
   - MaterialComponents/Snackbar
+  - Nuke (~> 7.5.2)
   - TinyConstraints
 
 SPEC REPOS:
@@ -48,14 +50,16 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - Nuke
     - TinyConstraints
 
 SPEC CHECKSUMS:
   MaterialComponents: 5ee94fadd206902ffa318ba5adfd3c9c8c799000
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   TinyConstraints: dbf7519aefc01ea59d62244300c7718aec68e280
 
-PODFILE CHECKSUM: dce9ae2fef9b8ee0b5cd2ee3680b1cc401a3ba62
+PODFILE CHECKSUM: e9d73d2b250952410ba7634c3119f86cfe98e8f9
 
 COCOAPODS: 1.6.0.beta.2
