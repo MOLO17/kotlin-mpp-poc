@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BAB1B8134AB04DB3309D86A /* Pods_Kotlin_MPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFD1B7C6C126B53E439C8D9 /* Pods_Kotlin_MPPTests.framework */; };
+		4547A53D58A1B555E47C4263 /* Pods_Kotlin_MPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0B41B75B937B331E9B4876 /* Pods_Kotlin_MPP.framework */; };
+		55211CED220485D3004AAB05 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55211CEC220485D3004AAB05 /* main.framework */; };
+		55211CEE220485D3004AAB05 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55211CEC220485D3004AAB05 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		557941652216E2E400B2C694 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557941642216E2E400B2C694 /* Snackbar.swift */; };
 		558DD2282200A86700252AB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD2272200A86700252AB5 /* AppDelegate.swift */; };
 		558DD22A2200A86700252AB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD2292200A86700252AB5 /* ViewController.swift */; };
 		558DD22D2200A86700252AB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558DD22B2200A86700252AB5 /* Main.storyboard */; };
 		558DD22F2200A86900252AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558DD22E2200A86900252AB5 /* Assets.xcassets */; };
 		558DD2322200A86900252AB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558DD2302200A86900252AB5 /* LaunchScreen.storyboard */; };
 		558DD23D2200A86900252AB5 /* Kotlin_MPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DD23C2200A86900252AB5 /* Kotlin_MPPTests.swift */; };
-		558DD2622200F45E00252AB5 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD2612200F45E00252AB5 /* main.framework */; };
-		558DD2632200F45E00252AB5 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 558DD2612200F45E00252AB5 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,13 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		558DD2642200F45E00252AB5 /* Embed Frameworks */ = {
+		55211CEB220485BF004AAB05 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				558DD2632200F45E00252AB5 /* main.framework in Embed Frameworks */,
+				55211CEE220485D3004AAB05 /* main.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,6 +45,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38B1242C6A43B57C89069871 /* Pods-Kotlin-MPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPPTests.release.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPPTests/Pods-Kotlin-MPPTests.release.xcconfig"; sourceTree = "<group>"; };
+		4185CFF4A062D221B567527C /* Pods-Kotlin-MPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPP.release.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP.release.xcconfig"; sourceTree = "<group>"; };
+		55211CEC220485D3004AAB05 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "kotlin-outputs/main.framework"; sourceTree = "<group>"; };
+		557941642216E2E400B2C694 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snackbar.swift; path = ../../../../../../../../Downloads/Snackbar.swift; sourceTree = "<group>"; };
 		558DD2242200A86700252AB5 /* Kotlin-MPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kotlin-MPP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		558DD2272200A86700252AB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		558DD2292200A86700252AB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +59,10 @@
 		558DD2382200A86900252AB5 /* Kotlin-MPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kotlin-MPPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		558DD23C2200A86900252AB5 /* Kotlin_MPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kotlin_MPPTests.swift; sourceTree = "<group>"; };
 		558DD23E2200A86900252AB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		558DD2612200F45E00252AB5 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "kotlin-outputs/main.framework"; sourceTree = "<group>"; };
+		5A0B41B75B937B331E9B4876 /* Pods_Kotlin_MPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kotlin_MPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5BD23AD917BC5671F892649 /* Pods-Kotlin-MPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPP.debug.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP.debug.xcconfig"; sourceTree = "<group>"; };
+		C59C4DB3DFE3F28066103B97 /* Pods-Kotlin-MPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kotlin-MPPTests.debug.xcconfig"; path = "Target Support Files/Pods-Kotlin-MPPTests/Pods-Kotlin-MPPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CDFD1B7C6C126B53E439C8D9 /* Pods_Kotlin_MPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kotlin_MPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				558DD2622200F45E00252AB5 /* main.framework in Frameworks */,
+				55211CED220485D3004AAB05 /* main.framework in Frameworks */,
+				4547A53D58A1B555E47C4263 /* Pods_Kotlin_MPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,19 +79,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAB1B8134AB04DB3309D86A /* Pods_Kotlin_MPPTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35D5856F4EC6AB0BB00E1EB4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5BD23AD917BC5671F892649 /* Pods-Kotlin-MPP.debug.xcconfig */,
+				4185CFF4A062D221B567527C /* Pods-Kotlin-MPP.release.xcconfig */,
+				C59C4DB3DFE3F28066103B97 /* Pods-Kotlin-MPPTests.debug.xcconfig */,
+				38B1242C6A43B57C89069871 /* Pods-Kotlin-MPPTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		558DD21B2200A86700252AB5 = {
 			isa = PBXGroup;
 			children = (
-				558DD2612200F45E00252AB5 /* main.framework */,
+				55211CEC220485D3004AAB05 /* main.framework */,
 				558DD2262200A86700252AB5 /* Kotlin-MPP */,
 				558DD23B2200A86900252AB5 /* Kotlin-MPPTests */,
 				558DD2252200A86700252AB5 /* Products */,
+				35D5856F4EC6AB0BB00E1EB4 /* Pods */,
+				6790A1B496752EE62907548E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +127,7 @@
 				558DD22E2200A86900252AB5 /* Assets.xcassets */,
 				558DD2302200A86900252AB5 /* LaunchScreen.storyboard */,
 				558DD2332200A86900252AB5 /* Info.plist */,
+				557941642216E2E400B2C694 /* Snackbar.swift */,
 			);
 			path = "Kotlin-MPP";
 			sourceTree = "<group>";
@@ -115,6 +141,15 @@
 			path = "Kotlin-MPPTests";
 			sourceTree = "<group>";
 		};
+		6790A1B496752EE62907548E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A0B41B75B937B331E9B4876 /* Pods_Kotlin_MPP.framework */,
+				CDFD1B7C6C126B53E439C8D9 /* Pods_Kotlin_MPPTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,11 +157,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 558DD2412200A86900252AB5 /* Build configuration list for PBXNativeTarget "Kotlin-MPP" */;
 			buildPhases = (
+				0C2FB499E81A57696F971782 /* [CP] Check Pods Manifest.lock */,
 				558DD2602200EF0400252AB5 /* Compile Kotlin */,
 				558DD2202200A86700252AB5 /* Sources */,
 				558DD2212200A86700252AB5 /* Frameworks */,
 				558DD2222200A86700252AB5 /* Resources */,
-				558DD2642200F45E00252AB5 /* Embed Frameworks */,
+				55211CEB220485BF004AAB05 /* Embed Frameworks */,
+				B1C72C23258FCEB718D02D2F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +178,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 558DD2442200A86900252AB5 /* Build configuration list for PBXNativeTarget "Kotlin-MPPTests" */;
 			buildPhases = (
+				E9907C944637C4F73FDB9EFE /* [CP] Check Pods Manifest.lock */,
 				558DD2342200A86900252AB5 /* Sources */,
 				558DD2352200A86900252AB5 /* Frameworks */,
 				558DD2362200A86900252AB5 /* Resources */,
@@ -214,6 +252,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C2FB499E81A57696F971782 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kotlin-MPP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		558DD2602200EF0400252AB5 /* Compile Kotlin */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +292,58 @@
 			shellPath = /bin/sh;
 			shellScript = "./build-ios.sh\n";
 		};
+		B1C72C23258FCEB718D02D2F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kotlin-MPP/Pods-Kotlin-MPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9907C944637C4F73FDB9EFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kotlin-MPPTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				557941652216E2E400B2C694 /* Snackbar.swift in Sources */,
 				558DD22A2200A86700252AB5 /* ViewController.swift in Sources */,
 				558DD2282200A86700252AB5 /* AppDelegate.swift in Sources */,
 			);
@@ -400,14 +513,15 @@
 		};
 		558DD2422200A86900252AB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5BD23AD917BC5671F892649 /* Pods-Kotlin-MPP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935BPM8A8T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$PROJECT_DIR/kotlin-outputs",
 					"$(PROJECT_DIR)/kotlin-outputs",
+					"${PODS_CONFIGURATION_BUILD_DIR}/**",
 				);
 				INFOPLIST_FILE = "Kotlin-MPP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -423,14 +537,15 @@
 		};
 		558DD2432200A86900252AB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4185CFF4A062D221B567527C /* Pods-Kotlin-MPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935BPM8A8T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$PROJECT_DIR/kotlin-outputs",
 					"$(PROJECT_DIR)/kotlin-outputs",
+					"${PODS_CONFIGURATION_BUILD_DIR}/**",
 				);
 				INFOPLIST_FILE = "Kotlin-MPP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -446,6 +561,7 @@
 		};
 		558DD2452200A86900252AB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C59C4DB3DFE3F28066103B97 /* Pods-Kotlin-MPPTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -467,6 +583,7 @@
 		};
 		558DD2462200A86900252AB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38B1242C6A43B57C89069871 /* Pods-Kotlin-MPPTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
